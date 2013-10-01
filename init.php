@@ -23,17 +23,17 @@ class MT_Admin_Email_Settings {
     public static function init(){
         //Check for pluggable conflicts and alert if needed
         if ( function_exists('wp_password_change_notification') || function_exists('wp_new_user_notification') ) {
-            add_action('admin_notices', array('MT_Admin_Email_Settings','conflictAlert') );
+            add_action('admin_notices', array(__CLASS__,'conflictAlert') );
         }
 
         //Load new pluggable functions
         require_once 'includes/pluggable.php';
 
         //Ensure the new settings are added to the database
-        register_activation_hook( __FILE__, array('MT_Admin_Email_Settings','activatePlugin') );
+        register_activation_hook( __FILE__, array(__CLASS__,'activatePlugin') );
 
         //Ensure the notifications page is created
-        add_action( 'admin_menu', array('MT_Admin_Email_Settings','menus') );
+        add_action( 'admin_menu', array(__CLASS__,'menus') );
     }
 
     /**
@@ -56,7 +56,7 @@ class MT_Admin_Email_Settings {
             __( 'Notifications', 'email-notifications' ), //Text to use in the menu
             'manage_options', //What capability is needed to see this menu item?
             'notifications', //What to use as the menu slug (unique id for this admin page)
-            array('MT_Admin_Email_Settings','renderNotificationScreen') //Callback to render the admin screen itself
+            array(__CLASS__,'renderNotificationScreen') //Callback to render the admin screen itself
         );
     }
 
