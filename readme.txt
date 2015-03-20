@@ -1,9 +1,11 @@
 === Admin Email Notifications ===
-Contributors: veraxus
+Contributors: Veraxus
 Tags: email, notifications, settings, admin, dashboard
+Requires PHP: 5.3
 Requires at least: 3.6
-Tested up to: 3.8
-Stable tag: 0.1
+Tested up to: 4.2
+Stable tag: 0.2
+GitHub Plugin URI: veraxus/nv-plugins-email-settings
 
 Allows admins to control which email notifications they want to receive from their WordPress site.
 
